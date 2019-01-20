@@ -213,7 +213,7 @@ var game = {
     clearInterval(timer);
 
     $("#start-screen h2").remove();
-    panel.html("<h2>YOUR SCORE!</h2>");
+    panel.html("<h2>FINAL SCORE:</h2>");
     panel.append("<h3>Correct Answers: " + this.correct + "</h3>");
     panel.append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
     panel.append("<h3>Unanswered Questions: " + (questions.length - (this.incorrect + this.correct)) + "</h3>");
