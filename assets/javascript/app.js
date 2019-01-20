@@ -4,10 +4,11 @@ $("#start").on("click", function() {
 })
 
 //Ends the game when the done button is clicked
-$(document).on("click", "#done", function (event) {
-    game.done();
+$(document).on("click", "#done", function(event) {
+  game.done();
 });
-
+//container to hold questions
+var panel = $("#quiz-container");
 //an array that contains objects that are the questions for the player. Each objects has a question, answer array and the correct answer
 var questions = [{
   question: "Normal adult dogs have how many teeth?",
@@ -57,7 +58,7 @@ var game = {
   correct: 0,
   incorrect: 0,
   timer: 0,
-  counter: 10, //timer
+  counter: 120, //timer
   countdown: function() { //a method....function within a function is a method...an action being performed on an object
     game.counter--;
     $("#counter").html(game.counter);
@@ -74,19 +75,20 @@ var game = {
   //===================================================================================================================
   start: function() {
     timer = setInterval(game.countdown, 1000) //every second the countdown function above will run....creating a timer
-    $("#start-screen").prepend('<h2>Time Remaining: <span id="counter">90</span> Seconds Left</h2>');
+    $("#start-screen").prepend('<h2 id="counter-text">Time Remaining: <span id="counter">120</span> Seconds Left</h2>');
     $("#start").remove(); //removes start button after it is clicked and shows the questions
+    $("#start-dog").remove();
     for (var i = 0; i < questions.length; i++) {
       //loops through the questions and adds each of them in a div to the html
-      $("#start-screen").append('<div class="questions">' + questions[i].question + '</div>');
+      panel.append('<h3 class="questions">' + questions[i].question + '</h3>');
       for (var j = 0; j < questions[i].answers.length; j++) {
         //loops through the questions array, grabs the answers, turns them into a radio button input type,
         //gives each radio button a value that is the list of possible answers
         //gives them a name and a class(that isn't working yet bceause I'm probably doing it wrong)
-        $("#start-screen").append("<input type='radio' name='questions-" + i + "' value='" + questions[i].answers[j] + "' class='answers'>" + questions[i].answers[j]);
+        panel.append("<input type='radio' name='questions-" + i + "' value='" + questions[i].answers[j] + "' class='answers'>" + questions[i].answers[j]);
       }
     }
-    $("#start-screen").append('<div><button id="done">Click When Done</button></div>');
+    panel.append("<button id='done'>CLICK WHEN DONE</button>");
   },
   //===================================================================================================================
   //Checks to make sure that each question has been answered
@@ -94,9 +96,9 @@ var game = {
   //  adds a score to correct correctAnswer
   //  else adds a score to incorrect answers
   //===================================================================================================================
-  done: function(){
-    $.each($("input[name='questions-0']:checked"), function(){
-      if ($(this).val() == questions[0].correctAnswer){
+  done: function() {
+    $.each($("input[name='questions-0']:checked"), function() {
+      if ($(this).val() == questions[0].correctAnswer) {
         game.correct++;
       } else {
         game.incorrect++;
@@ -104,106 +106,120 @@ var game = {
     });
 
     $.each(
-      $('input[name="questions-1"]:checked'), function(){
-      if ($(this).val() == questions[1].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-1"]:checked'),
+      function() {
+        if ($(this).val() == questions[1].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-2"]:checked'), function(){
-      if ($(this).val() == questions[2].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-2"]:checked'),
+      function() {
+        if ($(this).val() == questions[2].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-3"]:checked'), function(){
-      if ($(this).val() == questions[3].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-3"]:checked'),
+      function() {
+        if ($(this).val() == questions[3].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-4"]:checked'), function(){
-      if ($(this).val() == questions[4].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-4"]:checked'),
+      function() {
+        if ($(this).val() == questions[4].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-5"]:checked'), function(){
-      if ($(this).val() == questions[5].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-5"]:checked'),
+      function() {
+        if ($(this).val() == questions[5].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-6"]:checked'), function(){
-      if ($(this).val() == questions[6].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-6"]:checked'),
+      function() {
+        if ($(this).val() == questions[6].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-7"]:checked'), function(){
-      if ($(this).val() == questions[7].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-7"]:checked'),
+      function() {
+        if ($(this).val() == questions[7].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-8"]:checked'), function(){
-      if ($(this).val() == questions[8].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-8"]:checked'),
+      function() {
+        if ($(this).val() == questions[8].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-9"]:checked'), function(){
-      if ($(this).val() == questions[9].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-9"]:checked'),
+      function() {
+        if ($(this).val() == questions[9].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     $.each(
-      $('input[name="questions-10"]:checked'), function(){
-      if ($(this).val() == questions[10].correctAnswer){
-        game.correct++;
-      } else {
-        game.incorrect++;
-      }
-    });
+      $('input[name="questions-10"]:checked'),
+      function() {
+        if ($(this).val() == questions[10].correctAnswer) {
+          game.correct++;
+        } else {
+          game.incorrect++;
+        }
+      });
 
     this.result();
 
   },
 
-  result: function(){
+  result: function() {
     clearInterval(timer);
 
-    $("#start-screen").remove();
-    $("#done-title").html("Times Up!");
-    $("#correct-answers").html("Total Correct Answers: " + this.correct);
-    $("#incorrect-answers").html("Total Incorrect Answers: " + this.incorrect);
-    $("#unanswered").html("Total Unanswered: " + (questions.length - (this.correct+this.incorrect)));
+    $("#start-screen h2").remove();
+    panel.html("<h2>YOUR SCORE!</h2>");
+    panel.append("<h3>Correct Answers: " + this.correct + "</h3>");
+    panel.append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
+    panel.append("<h3>Unanswered Questions: " + (questions.length - (this.incorrect + this.correct)) + "</h3>");
+
+    $('#end-dog').prepend('<img id="end-dog-image" src="assets/images/puppy_with_bone.jpg" />')
+
+
   }
 }
