@@ -13,3 +13,6 @@
 * The game ends when the timer runs out or when the player click the 'Done' button. 
 
 * The app shows the number of correct answers, incorrect answers and unanswered questions on a new screen. 
+
+### Link to the project
+https://lulu-gibbons.github.io/TriviaGame/
