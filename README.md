@@ -1,6 +1,4 @@
-# TriviaGame
-
-## Timed Trivia Game
+# Timed Trivia Game
 ### Test Your Doggy Knowledge
 
 
